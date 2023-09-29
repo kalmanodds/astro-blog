@@ -18,8 +18,9 @@ export interface Props {
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
+  const projects = await getCollection("portfolio");
 
-  const tags = getUniqueTags(posts);
+  const tags = getUniqueTags([...posts, ...projects]);
 
   return tags.map(tag => {
     return {
