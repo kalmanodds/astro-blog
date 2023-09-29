@@ -6,10 +6,10 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Card from "@components/Card.astro";
 import getUniqueTags from "@utils/getUniqueTags";
-import getPostsByTag from "@utils/getPostsByTag";
-import slugify from "@utils/slugify";
+import { slugifyPost } from "@utils/slugify";
 import { SITE } from "@config";
-import getSortedPosts from "@utils/getSortedPosts";
+import { filterPostsByTag, filterProjectsByTag } from "@utils/filterByTag";
+import { sortItemsByDate } from "@utils/sortByDate";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -32,22 +32,25 @@ export async function getStaticPaths() {
 const { tag } = Astro.props;
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
+const taggedPosts = filterPostsByTag(posts, tag);
 
-const tagPosts = getPostsByTag(posts, tag);
+const projects = await getCollection("portfolio");
+const taggedProjects = filterProjectsByTag(projects, tag);
 
-const sortTagsPost = getSortedPosts(tagPosts);
+const taggedItems = [...taggedPosts, ...taggedProjects];
+const sortedTaggedItems = sortItemsByDate(taggedItems);
 ---
 
 <Layout title={`Tag:${tag} | ${SITE.title}`}>
   <Header activeNav="tags" />
   <Main
     pageTitle={`Tag:${tag}`}
-    pageDesc={`All the articles with the tag "${tag}".`}
+    pageDesc={`All the projects and posts with the tag "${tag}".`}
   >
     <ul>
       {
-        sortTagsPost.map(({ data }) => (
-          <Card href={`/posts/${slugify(data)}`} frontmatter={data} />
+        sortedTaggedItems.map(({ data }) => (
+          <Card href={`/posts/${slugifyPost(data)}`} frontmatter={data} />
         ))
       }
     </ul>

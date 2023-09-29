@@ -1,38 +1,38 @@
 ---
-import { SITE } from "@config";
-import Layout from "@layouts/Layout.astro";
-import Main from "@layouts/Main.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import Card from "@components/Card.astro";
-import LinkButton from "@components/LinkButton.astro";
-import {slugifyPost} from "@utils/slugify";
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
+import Layout from './Layout.astro';
+import { SITE } from '@config';
+import Header from '@components/Header.astro';
+import Main from './Main.astro';
+import Card from '@components/Card.astro';
+import { slugifyProject } from '@utils/slugify';
+import LinkButton from '@components/LinkButton.astro';
 
 export interface Props {
   pageNumber: number;
   totalPages: number;
-  posts: CollectionEntry<"blog">[];
+  projects: CollectionEntry<"portfolio">[];
 }
 
-const { pageNumber, totalPages, posts } = Astro.props;
+const { pageNumber, totalPages, projects } = Astro.props;
 
 const prev = pageNumber > 1 ? "" : "disabled";
 const next = pageNumber < totalPages ? "" : "disabled";
 ---
 
-<Layout title={`Posts | ${SITE.title}`}>
-  <Header activeNav="posts" />
-  <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
+<Layout title={`Portfolio | ${SITE.title}`}>
+  <Header activeNav="projects" />
+  <Main pageTitle='Portfolio' pageDesc='Featured projects.'>
+    
     <ul>
       {
-        posts.map(({ data }) => (
-          <Card href={`/posts/${slugifyPost(data)}`} frontmatter={data} />
+        projects.map(({ data }) => (
+          <Card href={`/projects/${slugifyProject(data)}`} frontmatter={data} />
         ))
       }
     </ul>
   </Main>
-
+  
   {
     totalPages > 1 && (
       <nav class="pagination-wrapper" aria-label="Pagination">
@@ -61,17 +61,4 @@ const next = pageNumber < totalPages ? "" : "disabled";
       </nav>
     )
   }
-  <Footer noMarginTop={totalPages > 1} />
 </Layout>
-
-<style>
-  .pagination-wrapper {
-    @apply mb-8 mt-auto flex justify-center;
-  }
-  .disabled {
-    @apply pointer-events-none select-none opacity-50 hover:text-skin-base group-hover:fill-skin-base;
-  }
-  .disabled-svg {
-    @apply group-hover:!fill-skin-base;
-  }
-</style>

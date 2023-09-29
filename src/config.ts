@@ -6,7 +6,7 @@ export const SITE: Site = {
   desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
   title: "kalmanodds",
   ogImage: "astropaper-og.jpg",
-  postPerPage: 3,
+  postPerPage: 4,
 };
 
 export const LOCALE = ["en-EN"]; // set to [] to use the environment default

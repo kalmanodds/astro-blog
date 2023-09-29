@@ -1,7 +1,7 @@
 ---
 title: How to add an estimated reading time in AstroPaper
 author: Sat Naing
-pubDatetime: 2023-07-21T10:11:06.130Z
+publishedAt: 2023-07-21T10:11:06.130Z
 postSlug: how-to-add-estimated-reading-time
 featured: false
 draft: false
@@ -73,7 +73,7 @@ import { z } from "astro:content";
 export const blogSchema = z
   .object({
     author: z.string().optional(),
-    pubDatetime: z.date(),
+    publishedAt: z.date(),
     title: z.string(),
     postSlug: z.string().optional(),
     featured: z.boolean().optional(),
@@ -163,7 +163,7 @@ export interface Props {
 
 const { post } = Astro.props;
 
-const { title, author, description, ogImage, pubDatetime, tags, readingTime } =
+const { title, author, description, ogImage, publishedAt, tags, readingTime } =
   post.data; // we can now directly access readingTime from frontmatter
 
 // other codes
@@ -187,8 +187,8 @@ const getSortedPosts = async (posts: CollectionEntry<"blog">[]) => {
     .filter(({ data }) => !data.draft)
     .sort(
       (a, b) =>
-        Math.floor(new Date(b.data.pubDatetime).getTime() / 1000) -
-        Math.floor(new Date(a.data.pubDatetime).getTime() / 1000)
+        Math.floor(new Date(b.data.publishedAt).getTime() / 1000) -
+        Math.floor(new Date(a.data.publishedAt).getTime() / 1000)
     );
 };
 
@@ -254,10 +254,10 @@ file: Card.tsx
 
 ```ts
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
-  const { title, pubDatetime, description, readingTime } = frontmatter;
+  const { title, publishedAt, description, readingTime } = frontmatter;
   return (
     ...
-    <Datetime datetime={pubDatetime} readingTime={readingTime} />
+    <Datetime datetime={publishedAt} readingTime={readingTime} />
     ...
   );
 }
@@ -270,7 +270,7 @@ file: PostDetails.tsx
 <main id="main-content">
   <h1 class="post-title">{title}</h1>
   <Datetime
-    datetime={pubDatetime}
+    datetime={publishedAt}
     size="lg"
     className="my-2"
     readingTime={readingTime}

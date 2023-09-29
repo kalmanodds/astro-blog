@@ -6,28 +6,33 @@ import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime.astro";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
+import marked from "marked";
 
 export interface Props {
-  post: CollectionEntry<"blog">;
+  project: CollectionEntry<"portfolio">;
 }
 
-const { post } = Astro.props;
+const { project } = Astro.props;
 
-const { title, author, description, ogImage, canonicalURL, publishedAt, tags } =
-  post.data;
+const { title, description, image, url, readmeUrl, publishedAt, tags } =
+  project.data;
 
-const { Content } = await post.render();
+const { Content } = await project.render();
 
-const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
+const ogUrl = new URL(image ? image : `${title}.png`, Astro.url.origin)
   .href;
+
+// TODO: Use readme url instead of github url
+const readmeResponse = await fetch(readmeUrl);
+const readmeMarkdown = await readmeResponse.text();
+const readmeContent = marked.parse(readmeMarkdown);
 ---
 
 <Layout
   title={title}
-  author={author}
   description={description}
   ogImage={ogUrl}
-  canonicalURL={canonicalURL}
+  canonicalURL={url}
 >
   <Header />
   <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
@@ -43,10 +48,11 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
     </button>
   </div>
   <main id="main-content">
-    <h1 class="post-title" transition:name={title}>{title}</h1>
+    <h1 class="project-title" transition:name={title}>{title}</h1>
     <Datetime datetime={publishedAt} size="lg" className="my-2" postTitle={title} />
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
+      <Fragment set:html={readmeContent} />
     </article>
 
     <ul class="tags-container">
@@ -60,7 +66,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
   main {
     @apply mx-auto w-full max-w-3xl px-4 pb-12;
   }
-  .post-title {
+  .project-title {
     @apply text-2xl font-semibold text-skin-accent;
   }
   .tags-container {

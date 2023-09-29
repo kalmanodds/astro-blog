@@ -7,13 +7,13 @@ import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
 import Card from "@components/Card.astro";
 import Socials from "@components/Socials.astro";
-import getSortedPosts from "@utils/getSortedPosts";
-import slugify from "@utils/slugify";
+import { slugifyPost } from "@utils/slugify";
 import { SOCIALS } from "@config";
+import { sortPostsByDate } from "@utils/sortByDate";
 
 const posts = await getCollection("blog");
 
-const sortedPosts = getSortedPosts(posts);
+const sortedPosts = sortPostsByDate(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
@@ -38,7 +38,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           blog posts
         </LinkButton> or check out my <LinkButton
           className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
-          href="/portfolio"
+          href="/projects"
         >
           portfolio
         </LinkButton> to see what I've been up to!
@@ -63,7 +63,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             <ul>
               {featuredPosts.map(({ data }) => (
                 <Card
-                  href={`/posts/${slugify(data)}`}
+                  href={`/posts/${slugifyPost(data)}`}
                   frontmatter={data}
                   secHeading={false}
                 />
@@ -74,34 +74,6 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         </>
       )
     }
-
-    <section id="recent-posts">
-      <h2>Recent Posts</h2>
-      <ul>
-        {
-          sortedPosts.map(
-            ({ data }, index) =>
-              index < 4 && (
-                <Card
-                  href={`/posts/${slugify(data)}`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
-              )
-          )
-        }
-      </ul>
-      <div class="all-posts-btn-wrapper">
-        <LinkButton href="/posts">
-          All Posts
-          <svg xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-            ></path>
-          </svg>
-        </LinkButton>
-      </div>
-    </section>
   </main>
 
   <Footer />
@@ -144,3 +116,4 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply my-8 text-center;
   }
 </style>
+@utils/sortByDate

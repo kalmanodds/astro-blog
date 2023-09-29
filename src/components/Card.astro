@@ -1,15 +1,15 @@
 ---
 import Datetime from "./Datetime.astro";
-import type { BlogFrontmatter } from "@content/_schemas";
+import type { BlogFrontmatter, ProjectFrontmatter } from "@content/_schemas";
 
 export interface Props {
   href?: string;
-  frontmatter: BlogFrontmatter;
+  frontmatter: BlogFrontmatter | ProjectFrontmatter;
   secHeading?: boolean;
 }
 
 const { href, frontmatter, secHeading } = Astro.props;
-const { title, pubDatetime, description } = frontmatter;
+const { title, publishedAt, description } = frontmatter;
 ---
 <li class="my-6">
   <a
@@ -26,6 +26,6 @@ const { title, pubDatetime, description } = frontmatter;
       </h3>
     )}
   </a>
-  <Datetime datetime={pubDatetime} postTitle={title} />
+  <Datetime datetime={publishedAt} postTitle={title} />
   <p>{description}</p>
 </li>
