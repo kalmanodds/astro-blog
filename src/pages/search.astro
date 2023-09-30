@@ -6,22 +6,19 @@ import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import SearchBar from "@components/SearchBar";
+import { sortItemsByDate } from "@utils/sortByDate";
 
-// Retrieve all articles
 const posts = await getCollection("blog", ({ data }) => !data.draft);
+const projects = await getCollection("portfolio", ({ data }) => !data.draft);
 
-// List of items to search in
-const searchList = posts.map(({ data }) => ({
-  title: data.title,
-  description: data.description,
-  data,
-}));
+const searchList = [...posts, ...projects];
+const sortedSearchList = sortItemsByDate(searchList);
 ---
 
 <Layout title={`Search | ${SITE.title}`}>
   <Header activeNav="search" />
-  <Main pageTitle="Search" pageDesc="Search any article ...">
-    <SearchBar client:load searchList={searchList} />
+  <Main pageTitle="Search" pageDesc="Search any project or blog post.">
+    <SearchBar client:load searchList={sortedSearchList} />
   </Main>
   <Footer />
-</Layout>@components/SearchBar
+</Layout>

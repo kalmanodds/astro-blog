@@ -1,21 +1,15 @@
 import Fuse from "fuse.js";
 import { useEffect, useRef, useState, useMemo } from "react";
-import Card from "@components/Card.astro";
-import slugifyPost from "@utils/slugify";
-import type { BlogFrontmatter } from "@content/_schemas";
-
-export type SearchItem = {
-  title: string;
-  description: string;
-  data: BlogFrontmatter;
-};
+import { slugifyPost } from "@utils/slugify";
+import type { CollectionEntry } from "astro:content";
+import SearchCard from "./SearchCard";
 
 interface Props {
-  searchList: SearchItem[];
+  searchList: CollectionEntry<"blog" | "portfolio">[];
 }
 
 interface SearchResult {
-  item: SearchItem;
+  item: CollectionEntry<"blog" | "portfolio">;
   refIndex: number;
 }
 
@@ -33,7 +27,7 @@ export default function SearchBar({ searchList }: Props) {
   const fuse = useMemo(
     () =>
       new Fuse(searchList, {
-        keys: ["title", "description"],
+        keys: ["data.title", "data.description"],
         includeMatches: true,
         minMatchCharLength: 2,
         threshold: 0.5,
@@ -109,13 +103,15 @@ export default function SearchBar({ searchList }: Props) {
 
       <ul>
         {searchResults &&
-          searchResults.map(({ item, refIndex }) => (
-            <Card
+          searchResults.map(({ item, refIndex }) => {
+            console.log(refIndex)
+            return (
+            <SearchCard
               href={`/posts/${slugifyPost(item.data)}`}
               frontmatter={item.data}
               key={`${refIndex}-${slugifyPost(item.data)}`}
             />
-          ))}
+          )})}
       </ul>
     </>
   );
