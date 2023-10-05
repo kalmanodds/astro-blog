@@ -4,9 +4,9 @@ projectSlug: "kalmanodds"
 description: "A blog/portfolio website created using Astro 3.0 and Tailwind."
 publishedAt: 2023-09-23T15:22:00Z
 image: ""
-url: ""
+url: "https://github.com/kalmanodds/kalmanodds.vercel.app"
 featured: true
-readmeUrl: "https://raw.githubusercontent.com/kalmanodds/astro-blog/master/README.md"
+readmeUrl: "https://raw.githubusercontent.com/kalmanodds/kalmanodds.vercel.app/master/README.md"
 tags:
   - TypeScript
   - TailwindCSS
