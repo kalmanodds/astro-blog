@@ -6,7 +6,7 @@ publishedAt: 2023-09-23T15:22:00Z
 image: ""
 url: ""
 featured: true
-readmeUrl: "https://raw.githubusercontent.com/redwoodjs/redwood/main/README.md"
+readmeUrl: "https://raw.githubusercontent.com/kalmanodds/astro-blog/master/README.md"
 tags:
   - TypeScript
   - TailwindCSS
