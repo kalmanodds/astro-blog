@@ -15,5 +15,6 @@ astro-blog is built using *Astro* and *Tailwind* and it serves as a portfolio an
 ## 📜 License
 
 The website is based on a template from [Sat Naing](https://satnaing.dev/)
+
 Licensed under the MIT License, Copyright © 2023
 
