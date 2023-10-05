@@ -6,7 +6,7 @@ astro-blog is built using *Astro* and *Tailwind* and it serves as a portfolio an
 
 ## ✅ Lighthouse Score
 
-![Lighthouse score](AstroPaper-lighthouse-score.svg)
+![Lighthouse score](https://kalmanodds.vercel.app/assets/lighthouse-score.svg)
 
 ## 📜 License
 
