@@ -1,8 +1,8 @@
-# astro-blog
+# kalmanodds.vercel.app
 
-astro-blog is my website, currently hosted at [kalmanodds.vercel.app](https://kalmanodds.vercel.app).
+This project is my personal website, currently hosted at [kalmanodds.vercel.app](https://kalmanodds.vercel.app).
 
-astro-blog is built using *Astro* and *Tailwind* and it serves as a portfolio and a blog.
+The website is built using *Astro* and *Tailwind* and it serves as a portfolio and a blog.
 
 ## ✅ Lighthouse Score
 

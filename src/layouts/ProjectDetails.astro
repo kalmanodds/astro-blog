@@ -51,6 +51,8 @@ const readmeContent = marked.parse(readmeMarkdown);
     <Datetime datetime={publishedAt} size="lg" className="my-2" postTitle={title} />
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
+      <p>See more on <a target="_blank" href={url}>Github</a>.</p>
+      <strong>README.md:</strong>
       <Fragment set:html={readmeContent} />
     </article>
 
