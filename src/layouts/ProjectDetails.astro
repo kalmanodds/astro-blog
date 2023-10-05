@@ -6,7 +6,7 @@ import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime.astro";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
-import marked from "marked";
+import { marked } from "marked";
 
 export interface Props {
   project: CollectionEntry<"portfolio">;
