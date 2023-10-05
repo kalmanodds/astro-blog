@@ -1,6 +1,6 @@
 ---
-title: "Kalmanodds.dev"
-projectSlug: "astro-blog"
+title: "kalmanodds.vercel.app"
+projectSlug: "kalmanodds"
 description: "A blog/portfolio website created using Astro 3.0 and Tailwind."
 publishedAt: 2023-09-23T15:22:00Z
 image: ""

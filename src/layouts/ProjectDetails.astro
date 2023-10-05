@@ -22,7 +22,6 @@ const { Content } = await project.render();
 const ogUrl = new URL(image ? image : `${title}.png`, Astro.url.origin)
   .href;
 
-// TODO: Use readme url instead of github url
 const readmeResponse = await fetch(readmeUrl);
 const readmeMarkdown = await readmeResponse.text();
 const readmeContent = marked.parse(readmeMarkdown);
