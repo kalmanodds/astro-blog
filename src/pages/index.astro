@@ -7,14 +7,18 @@ import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
 import Card from "@components/Card.astro";
 import Socials from "@components/Socials.astro";
-import { slugifyPost } from "@utils/slugify";
+import { slugifyPost, slugifyProject } from "@utils/slugify";
 import { SOCIALS } from "@config";
-import { sortPostsByDate } from "@utils/sortByDate";
+import { sortItemsByDate } from "@utils/sortByDate";
 
-const posts = await getCollection("blog");
+const posts = await getCollection("blog", ({data}) => !data.draft && data.featured);
+const projects = await getCollection("portfolio", ({data}) => !data.draft && data.featured);
 
-const sortedPosts = sortPostsByDate(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+// const sortedPosts = sortPostsByDate(posts);
+// const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const featuredItems = sortItemsByDate([...posts, ...projects]);
+
+
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
@@ -56,18 +60,23 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     <Hr />
 
     {
-      featuredPosts.length > 0 && (
+      featuredItems.length > 0 && (
         <>
           <section id="featured">
             <h2>Featured</h2>
             <ul>
-              {featuredPosts.map(({ data }) => (
-                <Card
-                  href={`/posts/${slugifyPost(data)}`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
-              ))}
+              {featuredItems.map((item) => {
+                const href = item.collection === "blog"
+                  ? `/posts/${slugifyPost(item.data)}`
+                  : `/projects/${slugifyProject(item.data)}`;
+                return (
+                  <Card
+                    href={href}
+                    frontmatter={item.data}
+                    secHeading={false}
+                  />
+                );
+              })}
             </ul>
           </section>
           <Hr />

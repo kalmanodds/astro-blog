@@ -17,6 +17,7 @@ const { centered = false } = Astro.props;
         href={social.href}
         className="p-2 hover:rotate-6 sm:p-1"
         title={social.linkTitle}
+        openInNewTab={true}
       >
         <Fragment set:html={socialIcons[social.name]} />
       </LinkButton>

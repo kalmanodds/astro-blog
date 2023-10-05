@@ -9,6 +9,6 @@ export const slugifyPost = (post: BlogFrontmatter) =>
   post.postSlug ? slugger(post.postSlug) : slugger(post.title);
 
 export const slugifyProject = (project: ProjectFrontmatter) => 
-  slugger(project.title);
+  project.projectSlug ? slugger(project.projectSlug) : slugger(project.title);
 
 

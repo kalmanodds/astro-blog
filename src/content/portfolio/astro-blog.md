@@ -1,9 +1,11 @@
 ---
-title: "astro-blog"
+title: "Kalmanodds.dev"
+projectSlug: "astro-blog"
 description: "A blog/portfolio website created using Astro 3.0 and Tailwind."
 publishedAt: 2023-09-23T15:22:00Z
 image: ""
 url: ""
+featured: true
 readmeUrl: "https://raw.githubusercontent.com/redwoodjs/redwood/main/README.md"
 tags:
   - TypeScript

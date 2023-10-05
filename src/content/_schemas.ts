@@ -12,6 +12,7 @@ export const blogSchema = z
     ogImage: z.string().optional(),
     description: z.string(),
     canonicalURL: z.string().optional(),
+    type: z.string().default("post"),
   })
   .strict();
 
@@ -25,9 +26,11 @@ export const projectSchema = z
     featured: z.boolean().optional(),
     draft: z.boolean().optional(),
     image: z.string(),
+    projectSlug: z.string().optional(),
     url: z.string(),
     readmeUrl: z.string(),
     tags: z.array(z.string()).default(["others"]),
+    type: z.string().default("project"),
   })
   .strict();
 
