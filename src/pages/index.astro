@@ -7,9 +7,9 @@ import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
 import Card from "@components/Card.astro";
 import Socials from "@components/Socials.astro";
-import { slugifyPost, slugifyProject } from "@utils/slugify";
 import { SOCIALS } from "@config";
 import { sortItemsByDate } from "@utils/sortByDate";
+import { getItemUrl } from "@utils/getItemUrl";
 
 const posts = await getCollection("blog", ({data}) => !data.draft && data.featured);
 const projects = await getCollection("portfolio", ({data}) => !data.draft && data.featured);
@@ -61,18 +61,13 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           <section id="featured">
             <h2>Featured</h2>
             <ul>
-              {featuredItems.map((item) => {
-                const href = item.collection === "blog"
-                  ? `/posts/${slugifyPost(item.data)}`
-                  : `/projects/${slugifyProject(item.data)}`;
-                return (
-                  <Card
-                    href={href}
-                    frontmatter={item.data}
-                    secHeading={false}
-                  />
-                );
-              })}
+              {featuredItems.map((item) => (
+                <Card
+                  href={getItemUrl(item)}
+                  frontmatter={item.data}
+                  secHeading={false}
+                />
+              ))}
             </ul>
           </section>
         </>

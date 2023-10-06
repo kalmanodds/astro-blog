@@ -6,10 +6,10 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Card from "@components/Card.astro";
 import getUniqueTags from "@utils/getUniqueTags";
-import { slugifyPost } from "@utils/slugify";
 import { SITE } from "@config";
 import { filterPostsByTag, filterProjectsByTag } from "@utils/filterByTag";
 import { sortItemsByDate } from "@utils/sortByDate";
+import { getItemUrl } from "@utils/getItemUrl";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -50,8 +50,8 @@ const sortedTaggedItems = sortItemsByDate(taggedItems);
   >
     <ul>
       {
-        sortedTaggedItems.map(({ data }) => (
-          <Card href={`/posts/${slugifyPost(data)}`} frontmatter={data} />
+        sortedTaggedItems.map((item) => (
+          <Card href={getItemUrl(item)} frontmatter={item.data} />
         ))
       }
     </ul>

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { slugifyPost } from "@utils/slugify";
 import type { CollectionEntry } from "astro:content";
 import SearchCard from "./SearchCard";
+import { getItemUrl } from "@utils/getItemUrl";
 
 interface Props {
   searchList: CollectionEntry<"blog" | "portfolio">[];
@@ -103,15 +104,13 @@ export default function SearchBar({ searchList }: Props) {
 
       <ul>
         {searchResults &&
-          searchResults.map(({ item, refIndex }) => {
-            console.log(refIndex)
-            return (
+          searchResults.map(({ item, refIndex }) => (
             <SearchCard
-              href={`/posts/${slugifyPost(item.data)}`}
+              href={getItemUrl(item)}
               frontmatter={item.data}
               key={`${refIndex}-${slugifyPost(item.data)}`}
             />
-          )})}
+          ))}
       </ul>
     </>
   );
