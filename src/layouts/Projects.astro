@@ -7,6 +7,7 @@ import Main from './Main.astro';
 import Card from '@components/Card.astro';
 import { slugifyProject } from '@utils/slugify';
 import LinkButton from '@components/LinkButton.astro';
+import Footer from '@components/Footer.astro';
 
 export interface Props {
   pageNumber: number;
@@ -61,4 +62,5 @@ const next = pageNumber < totalPages ? "" : "disabled";
       </nav>
     )
   }
+  <Footer noMarginTop={totalPages > 1} />
 </Layout>

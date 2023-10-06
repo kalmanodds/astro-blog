@@ -1,6 +1,6 @@
 ---
 author: Sigurður Kalman Oddsson
-publishedAt: 2022-10-05T15:22:00Z
+publishedAt: 2023-10-05T15:22:00Z
 title: How I Added View Transitions Using Astro 3.0
 postSlug: how-i-added-astro-view-transitions
 featured: true

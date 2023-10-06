@@ -14,11 +14,7 @@ import { sortItemsByDate } from "@utils/sortByDate";
 const posts = await getCollection("blog", ({data}) => !data.draft && data.featured);
 const projects = await getCollection("portfolio", ({data}) => !data.draft && data.featured);
 
-// const sortedPosts = sortPostsByDate(posts);
-// const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const featuredItems = sortItemsByDate([...posts, ...projects]);
-
-
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
@@ -79,12 +75,10 @@ const socialCount = SOCIALS.filter(social => social.active).length;
               })}
             </ul>
           </section>
-          <Hr />
         </>
       )
     }
   </main>
-
   <Footer />
 </Layout>
 
@@ -125,4 +119,3 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply my-8 text-center;
   }
 </style>
-@utils/sortByDate
