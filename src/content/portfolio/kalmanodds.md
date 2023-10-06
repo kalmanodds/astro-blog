@@ -8,6 +8,7 @@ url: "https://github.com/kalmanodds/kalmanodds.vercel.app"
 featured: true
 readmeUrl: "https://raw.githubusercontent.com/kalmanodds/kalmanodds.vercel.app/master/README.md"
 tags:
+  - Astro
   - TypeScript
   - TailwindCSS
 ---
