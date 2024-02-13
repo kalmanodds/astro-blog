@@ -1,8 +1,11 @@
 export default function getTailwindTagColor(tag: string) {
   switch(tag) {
-    case "typescript": return "bg-tag-typescript";
     case "astro": return "bg-tag-astro";
+    case "docker": return "bg-tag-docker";
+    case "nextjs": return "bg-tag-nextjs";
+    case "postgres": return "bg-tag-postgres";
     case "tailwindcss": return "bg-tag-tailwindcss";
-    default: return "bg-skin-fill";
+    case "typescript": return "bg-tag-typescript";
+    default: return "bg-skin-accent";
   }
 }

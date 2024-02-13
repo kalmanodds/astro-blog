@@ -11,9 +11,12 @@
     --color-card: 52, 63, 96;
     --color-card-muted: 138, 51, 2;
     --color-border: 171, 130, 8;
-    --color-tag-typescript: 49, 120, 198;
     --color-tag-astro: 255, 86, 6;
+    --color-tag-docker: 29, 99, 237;
+    --color-tag-nextjs: 20, 20, 20;
+    --color-tag-postgres: 51, 103, 145;
     --color-tag-tailwindcss: 22, 190, 203;
+    --color-tag-typescript: 49, 120, 198;
   }
   body {
     @apply flex min-h-screen flex-col bg-skin-fill font-mono text-skin-base 

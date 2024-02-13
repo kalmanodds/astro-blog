@@ -37,9 +37,12 @@ module.exports = {
         "card-muted": withOpacity("--color-card-muted"),
       },
       tag: {
-        typescript: withOpacity("--color-tag-typescript"),
         astro: withOpacity("--color-tag-astro"),
+        docker: withOpacity("--color-tag-docker"),
+        nextjs: withOpacity("--color-tag-nextjs"),
+        postgres: withOpacity("--color-tag-postgres"),
         tailwindcss: withOpacity("--color-tag-tailwindcss"),
+        typescript: withOpacity("--color-tag-typescript"),
       }
     },
     outlineColor: {
