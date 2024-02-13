@@ -49,16 +49,17 @@ const readmeContent = marked.parse(readmeMarkdown);
   <main id="main-content">
     <h1 class="project-title" transition:name={title}>{title}</h1>
     <Datetime datetime={publishedAt} size="lg" className="my-2" postTitle={title} />
+    
+    <ul class="mt-4 mb-8">
+      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
+    </ul>
+
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
       <p>See more on <a target="_blank" href={url}>Github</a>.</p>
       <strong>README.md:</strong>
       <Fragment set:html={readmeContent} />
     </article>
-
-    <ul class="tags-container">
-      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
-    </ul>
   </main>
   <Footer />
 </Layout>
@@ -69,8 +70,5 @@ const readmeContent = marked.parse(readmeMarkdown);
   }
   .project-title {
     @apply text-2xl font-semibold text-skin-accent;
-  }
-  .tags-container {
-    @apply my-8;
   }
 </style>

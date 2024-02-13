@@ -45,13 +45,15 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
   <main id="main-content">
     <h1 class="post-title" transition:name={title}>{title}</h1>
     <Datetime datetime={publishedAt} size="lg" className="my-2" postTitle={title} />
+    
+    <ul class="mt-4 mb-8">
+      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
+    </ul>
+
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
     </article>
 
-    <ul class="tags-container">
-      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
-    </ul>
   </main>
   <Footer />
 </Layout>
@@ -62,8 +64,5 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
   }
   .post-title {
     @apply text-2xl font-semibold text-skin-accent;
-  }
-  .tags-container {
-    @apply my-8;
   }
 </style>

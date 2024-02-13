@@ -36,6 +36,11 @@ module.exports = {
         card: withOpacity("--color-card"),
         "card-muted": withOpacity("--color-card-muted"),
       },
+      tag: {
+        typescript: withOpacity("--color-tag-typescript"),
+        astro: withOpacity("--color-tag-astro"),
+        tailwindcss: withOpacity("--color-tag-tailwindcss"),
+      }
     },
     outlineColor: {
       skin: {
