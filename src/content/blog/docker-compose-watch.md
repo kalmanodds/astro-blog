@@ -1,6 +1,6 @@
 ---
 author: Sigurður Kalman Oddsson
-publishedAt: 2024-02-12T15:22:00Z
+publishedAt: 2024-02-24T17:35:00Z
 title: "Full-Stack Development With Docker Compose Watch"
 postSlug: docker-compose-watch
 featured: true
