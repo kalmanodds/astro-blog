@@ -5,6 +5,7 @@ import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Card from "@components/Card.astro";
+// import TagComponent from "@components/Tag.astro"
 import getUniqueTags from "@utils/getUniqueTags";
 import { SITE } from "@config";
 import { filterPostsByTag, filterProjectsByTag } from "@utils/filterByTag";
@@ -46,8 +47,10 @@ const sortedTaggedItems = sortItemsByDate(taggedItems);
   <Header activeNav="tags" />
   <Main
     pageTitle={`Tag:${tag}`}
-    pageDesc={`All the projects and posts with the tag "${tag}".`}
+    pageDesc={"All the projects and posts with the tag "}
+    trailingTag={tag}
   >
+  <span></span>
     <ul>
       {
         sortedTaggedItems.map((item) => (

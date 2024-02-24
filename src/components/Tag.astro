@@ -1,23 +1,21 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import getTailwindTagColor from "../utils/getTailwindTagColor"
 
-export interface Props {
+export interface Props extends HTMLAttributes<"a"> {
   name: string;
   size?: "sm" | "lg";
 }
 
-const { name, size = "sm" } = Astro.props;
+const { name, class: className, size = "sm", } = Astro.props;
 
 const backgroundColorStyle = getTailwindTagColor(name);
 const marginStyles = size === "sm" ? "my-1 mr-2" : "my-3 mr-4"
+const sizeStyles = size === "sm" ? "text-sm" : "text-lg";
 ---
-<li
-  class={`${backgroundColorStyle} ${marginStyles} inline-block rounded-full py-1 px-2 leading-none bg-opacity-50 hover:bg-opacity-70`}
+<a
+  href={`/tags/${name.toLowerCase()}`}
+  class={`${className} ${backgroundColorStyle} ${marginStyles} ${sizeStyles} rounded-full py-1 px-2 leading-none bg-opacity-50 hover:bg-opacity-70 transition-all`}
 >
-  <a
-    href={`/tags/${name.toLowerCase()}`}
-    class={`${size === "sm" ? "text-sm" : "text-lg"} group`}
-  >
-    {name.toLowerCase()}
-  </a>
-</li>
+  {name.toLowerCase()}
+</a>

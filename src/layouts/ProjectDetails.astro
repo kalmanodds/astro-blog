@@ -51,7 +51,7 @@ const readmeContent = marked.parse(readmeMarkdown);
     <Datetime datetime={publishedAt} size="lg" className="my-2" postTitle={title} />
     
     <ul class="mt-4 mb-8">
-      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
+      {tags.map(tag => <li class="inline"><Tag name={slugifyStr(tag)} /></li>)}
     </ul>
 
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">

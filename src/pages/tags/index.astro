@@ -18,7 +18,7 @@ let tags = getUniqueTags([...posts, ...projects]);
   <Header activeNav="tags" />
   <Main pageTitle="Tags" pageDesc="All the tags used in projects and posts.">
     <ul>
-      {tags.map(tag => <Tag name={tag} size="lg" />)}
+      {tags.map(tag => <li class="inline"><Tag name={tag} size="lg" /></li>)}
     </ul>
   </Main>
   <Footer />
