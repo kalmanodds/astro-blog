@@ -44,7 +44,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
   </div>
   <main id="main-content">
     <h1 class="post-title" transition:name={title}>{title}</h1>
-    <Datetime datetime={publishedAt} size="lg" className="my-2" postTitle={title} />
+    <Datetime datetime={publishedAt} type="post" size="lg" className="my-2" postTitle={title} />
     
     <ul class="mt-4 mb-8">
       {tags.map(tag => <li class="inline"><Tag name={slugifyStr(tag)} /></li>)}

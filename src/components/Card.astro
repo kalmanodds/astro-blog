@@ -9,7 +9,7 @@ export interface Props {
 }
 
 const { href, frontmatter, secHeading } = Astro.props;
-const { title, publishedAt, description } = frontmatter;
+const { title, publishedAt, description, type } = frontmatter;
 ---
 <li class="my-6">
   <a
@@ -26,6 +26,6 @@ const { title, publishedAt, description } = frontmatter;
       </h3>
     )}
   </a>
-  <Datetime datetime={publishedAt} postTitle={title} />
+  <Datetime datetime={publishedAt} postTitle={title} type={type} />
   <p>{description}</p>
 </li>
