@@ -43,4 +43,4 @@ The second issue was that this feature can only be used in *Astro* components an
 
 Working with Astro has been super nice so far. Upgrading the framework and adding brand new functionality in just a few lines of code is the epitome of good DX. If you've been contemplating trying Astro out after the 3.0 release, I urge you to pull the trigger.
 
-The Source code for this website can be found [here](https://github.com/kalmanodds/astro-blog).
+The source code for this website can be found on [github](https://github.com/kalmanodds/astro-blog).
