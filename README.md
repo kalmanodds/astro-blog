@@ -1,12 +1,12 @@
-# kalmanodds.vercel.app
+# kalmanodds.com
 
-This project is my personal website, currently hosted at [kalmanodds.vercel.app](https://kalmanodds.vercel.app).
+This project is my personal website, currently hosted at [kalmanodds.com](https://kalmanodds.com).
 
 The website is built using *Astro* and *Tailwind* and it serves as a portfolio and a blog.
 
 ## ✅ Lighthouse Score
 
-![Lighthouse score](https://kalmanodds.vercel.app/assets/lighthouse-score.svg)
+![Lighthouse score](https://kalmanodds.com/assets/lighthouse-score.svg)
 
 ## 📜 License
 
