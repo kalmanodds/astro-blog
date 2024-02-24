@@ -4,7 +4,7 @@ publishedAt: 2024-02-12T15:22:00Z
 title: "Full-Stack Development With Docker Compose Watch"
 postSlug: docker-compose-watch
 featured: true
-draft: true
+draft: false
 tags:
   - docker
   - nextjs
@@ -276,7 +276,7 @@ Now we can finally run `docker compose watch` to have our 2 containers run and r
 
 And as our application grows in complexity we can add additional services to our *Docker Compose* configuration and enjoy the amazing DX benefits of `docker compose watch`.
 
-The source code for this project is available on [github]().
+The source code for this project is available on [github](https://github.com/kalmanodds/docker-compose-watch-example).
 
 ## Caveats
 
