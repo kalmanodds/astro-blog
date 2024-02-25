@@ -17,9 +17,9 @@ let tags = getUniqueTags([...posts, ...projects]);
 <Layout title={`Tags | ${SITE.title}`}>
   <Header activeNav="tags" />
   <Main pageTitle="Tags" pageDesc="All the tags used in projects and posts.">
-    <ul>
-      {tags.map(tag => <li class="inline"><Tag name={tag} size="lg" /></li>)}
-    </ul>
+    <div class="flex flex-row flex-wrap">
+      {tags.map(tag => <Tag name={tag} size="lg" />)}
+    </div>
   </Main>
   <Footer />
 </Layout>
