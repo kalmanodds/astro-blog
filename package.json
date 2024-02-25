@@ -1,6 +1,6 @@
 {
   "name": "astro-blog",
-  "version": "2.3.0",
+  "version": "1.0.0",
   "scripts": {
     "check": "astro check --watch",
     "dev": "astro dev",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.5.5",
     "@astrojs/rss": "^4.0.5",
+    "@astrojs/vercel": "^7.3.3",
     "@resvg/resvg-js": "^2.4.1",
     "@vercel/analytics": "^1.2.2",
     "astro": "^4.4.4",

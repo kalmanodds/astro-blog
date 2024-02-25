@@ -1,0 +1,9 @@
+---
+import Projects from "@layouts/Projects.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("portfolio", ({ data }) => !data.draft);
+---
+
+<Projects projects={projects} pageNumber={1} totalPages={projects.length} />
+
