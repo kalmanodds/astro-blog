@@ -1,6 +1,6 @@
 ---
 author: Sigurður Kalman Oddsson
-publishedAt: 2024-02-24T17:35:00Z
+publishedAt: 2024-02-26T13:55:00Z
 title: "Full-Stack Development With Docker Compose Watch"
 postSlug: docker-compose-watch
 featured: true
@@ -17,7 +17,7 @@ My favorite use case for *Docker* is to spin up a local database for development
 Taking this a step further, it is possible to run all neccessary components of your application with a single *Docker Compose* configuration.
 Until recently, this has been a painful method of doing development since any code changes would require a full restart to take effect. 
 
-Instroduced in a recent update, `docker compose watch` allows *Docker Compose* services to monitor certain code paths and update as you edit and save code.
+Instroduced in version 2.22, `docker compose watch` allows *Docker Compose* services to monitor certain code paths and update as you edit and save code.
 In this article I will show you how to set up a project using *Next.js* and *PostgreSQL* that can be spun up locally using this command.
 
 ## Creating the Next.js App
@@ -81,7 +81,7 @@ We can do this by appending the following to our *docker-compose.yaml*:
     ports:
       - 5432:5432
 ```
-Now `docker compose up` additionally spins up a local database which we can connect to by adding the following connection string to a *.env* file in the root of our *Next.js* project:
+Now `docker compose up` additionally spins up a local database that we can connect to by adding the following connection string to a *.env* file in the root of our *Next.js* project:
 ```bash
 POSTGRES_URL="postgres://root:123@localhost:5432/example"
 ```
